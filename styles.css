@@ -1,0 +1,28 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#cellContainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+  width: 150px;
+  height: 150px;
+  background-color: lightgray;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+button {
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  border-radius: 8px;
+}
