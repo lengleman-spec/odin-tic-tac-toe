@@ -14,4 +14,8 @@ const Gameboard = () => {
     }
     return false;
   };
+
+  const reset = () => {
+    board = ["", "", "", "", "", "", "", "", ""];
+  };
 };
