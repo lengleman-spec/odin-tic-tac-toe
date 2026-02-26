@@ -1,37 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-h1 {
+body {
   font-family: "Inter", sans-serif;
-  font-size: 2rem;
+  text-align: center;
 }
 
-.game-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#cellContainer {
+#board {
   display: grid;
-  grid-template-columns: repeat(3, auto);
-}
-
-.cell {
-  width: 150px;
-  height: 150px;
-  background-color: lightgray;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
+  grid-template-columns: repeat(3, 100px);
+  gap: 5px;
   justify-content: center;
-  font-size: 4rem;
-  font-family: "Inter", sans-serif;
-}
-
-button {
-  margin: 2rem 0;
-  font-size: 1.2rem;
-  font-family: "Inter", sans-serif;
-  border-radius: 8px;
+  margin: 20px auto;
 }
