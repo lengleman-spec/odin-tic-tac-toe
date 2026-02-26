@@ -3,7 +3,7 @@
     update board, check win,
     check tie, switch player*/
 
-const Gameboard = () => {
+const Gameboard = (() => {
   let board = ["", "", "", "", "", "", "", "", ""];
   const getBoard = () => board;
 
@@ -18,4 +18,15 @@ const Gameboard = () => {
   const reset = () => {
     board = ["", "", "", "", "", "", "", "", ""];
   };
-};
+
+  return {
+    getBoard,
+    setCell,
+    reset,
+  };
+})();
+
+// Player factory:
+function createPlayer(name, marker) {
+  return { name, marker };
+}
