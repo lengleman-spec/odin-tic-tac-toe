@@ -46,4 +46,17 @@ const Game = () => {
     [6, 7, 8],
     [2, 5, 8],
   ];
+
+  const start = (name1, name2) => {
+    players = [
+      createPlayer(name1 || "Player 1", "X"),
+      createPlayer(name2 || "Player 2", "O"),
+    ];
+
+    currentPlayer = players[0];
+    gameOver = false;
+    Gameboard.reset();
+
+    console.log(`Game started! ${currentPlayer.name}'s turn!`);
+  };
 };
