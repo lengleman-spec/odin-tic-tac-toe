@@ -66,3 +66,19 @@ const switchPlayer = () => {
   currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
   console.log(`${currentPlayer.name}'s turn`);
 };
+
+// logic to check for a winner
+const checkWinner = () => {
+  const board = Gameboard.getBoard(); //gets current state of gameboard
+  return winningCombos.some((combo) => {
+    const [a, b, c] = combo;
+    return board[a] && board[a] === board[b] && board[a] === board[c];
+  });
+};
+
+// check for board = full = tie
+const checkTie = () => {
+  return Gameboard.getBoard().every((cell) => cell !== "");
+};
+
+// play a single round
