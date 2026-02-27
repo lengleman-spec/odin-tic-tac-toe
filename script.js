@@ -4,13 +4,20 @@
     check tie, switch player*/
 const cells = document.querySelectorAll(".cell");
 
+const updateDisplay = () => {
+  const board = Gameboard.getBoard();
+  cells.forEach((cell, index) => {
+    cell.textContent = board[index];
+  });
+};
+
 cells.forEach((cell) => {
-  cell.addEventListener("click", ( => {
-    const index = cell.CDATA_SECTION_NODE.index;
-    Game.playRound(index)
+  cell.addEventListener("click", () => {
+    const index = cell.dataset.index;
+    Game.playRound(index);
     updateDisplay();
-  }))
-})
+  });
+});
 
 const Gameboard = (() => {
   let board = ["", "", "", "", "", "", "", "", ""];
@@ -119,3 +126,5 @@ const Game = (() => {
 
   return { start, playRound };
 })();
+
+Game.start();
