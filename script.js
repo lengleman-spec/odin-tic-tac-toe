@@ -31,7 +31,7 @@ function createPlayer(name, marker) {
   return { name: name, marker: marker };
 }
 
-const Game = () => {
+const Game = (() => {
   let players = [];
   let currentPlayer;
   let gameOver = false;
@@ -59,36 +59,54 @@ const Game = () => {
 
     console.log(`Game started! ${currentPlayer.name}'s turn!`);
   };
-};
 
-// to switch players each turn:
-const switchPlayer = () => {
-  currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
-  console.log(`${currentPlayer.name}'s turn`);
-};
+  // to switch players each turn:
+  const switchPlayer = () => {
+    currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
+    console.log(`${currentPlayer.name}'s turn`);
+  };
 
-// logic to check for a winner
-const checkWinner = () => {
-  const board = Gameboard.getBoard(); //gets current state of gameboard
-  return winningCombos.some((combo) => {
-    const [a, b, c] = combo;
-    return board[a] && board[a] === board[b] && board[a] === board[c];
-  });
-};
+  // logic to check for a winner
+  const checkWinner = () => {
+    const board = Gameboard.getBoard(); //gets current state of gameboard
+    return winningCombos.some((combo) => {
+      const [a, b, c] = combo;
+      return board[a] && board[a] === board[b] && board[a] === board[c];
+    });
+  };
 
-// check for board = full = tie
-// every() asks 'does every item in this array pass the test?'
-const checkTie = () => {
-  return Gameboard.getBoard().every((cell) => cell !== "");
-};
+  // check for board = full = tie
+  // every() asks 'does every item in this array pass the test?'
+  const checkTie = () => {
+    return Gameboard.getBoard().every((cell) => cell !== "");
+  };
 
-// play a single round
-const playRound = (index) => {
-  if (gameOver) return;
+  // play a single round
+  // runs when user clicks a square
+  const playRound = (index) => {
+    if (gameOver) return;
 
-  const moveMade = Gameboard.setCell(index, currentPlayer.marker);
-  if (!moveMade) {
-    console.log("Spot already taken");
-    return;
-  }
-};
+    const moveMade = Gameboard.setCell(index, currentPlayer.marker);
+    if (!moveMade) {
+      console.log("Spot already taken");
+      return;
+    }
+    // console.log(Gameboard.getBoard())
+
+    if (checkWinner()) {
+      gameOver = true;
+      console.log(`${currentPlayer.name} wins!`);
+      return;
+    }
+
+    if (checkTie()) {
+      gameOver = true;
+      console.log("It's a tie!");
+      return;
+    }
+
+    switchPlayer();
+  };
+
+  return { start, playRound };
+})();
