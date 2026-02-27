@@ -77,8 +77,18 @@ const checkWinner = () => {
 };
 
 // check for board = full = tie
+// every() asks 'does every item in this array pass the test?'
 const checkTie = () => {
   return Gameboard.getBoard().every((cell) => cell !== "");
 };
 
 // play a single round
+const playRound = (index) => {
+  if (gameOver) return;
+
+  const moveMade = Gameboard.setCell(index, currentPlayer.marker);
+  if (!moveMade) {
+    console.log("Spot already taken");
+    return;
+  }
+};
