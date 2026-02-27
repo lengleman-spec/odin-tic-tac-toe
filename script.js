@@ -124,6 +124,12 @@ const Game = (() => {
     switchPlayer();
   };
 
+  const resetGame = () => {
+    gameOver = false;
+    Gameboard.reset();
+    currentPlayer = players[0];
+  };
+
   return { start, playRound };
 })();
 
