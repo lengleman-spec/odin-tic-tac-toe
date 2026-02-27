@@ -2,6 +2,15 @@
     player clicks, validate move,
     update board, check win,
     check tie, switch player*/
+const cells = document.querySelectorAll(".cell");
+
+cells.forEach((cell) => {
+  cell.addEventListener("click", ( => {
+    const index = cell.CDATA_SECTION_NODE.index;
+    Game.playRound(index)
+    updateDisplay();
+  }))
+})
 
 const Gameboard = (() => {
   let board = ["", "", "", "", "", "", "", "", ""];
