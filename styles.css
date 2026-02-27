@@ -12,6 +12,10 @@ h1 {
   text-align: center;
 }
 
+.game-container {
+  display: flex;
+  flex-direction: column;
+}
 .board {
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -28,4 +32,11 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+}
+
+button {
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
 }
