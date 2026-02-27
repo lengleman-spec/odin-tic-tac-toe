@@ -3,6 +3,12 @@
     update board, check win,
     check tie, switch player*/
 const cells = document.querySelectorAll(".cell");
+const resetBtn = document.querySelector("#resetBtn");
+
+resetBtn.addEventListener("click", () => {
+  Game.resetGame();
+  updateDisplay();
+});
 
 const updateDisplay = () => {
   const board = Gameboard.getBoard();
@@ -130,7 +136,7 @@ const Game = (() => {
     currentPlayer = players[0];
   };
 
-  return { start, playRound };
+  return { start, playRound, resetGame };
 })();
 
 Game.start();
